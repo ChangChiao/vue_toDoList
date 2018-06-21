@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wickedpicker@0.4.3/dist/wickedpicker.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div id="app">
+        <div class="list_type">
+          <ul>
+            <li v-cloak v-for="(vo, index) in menuList" @click="changeType(vo.type)" :key="index" :class="{active : nowType == vo.type}">{{vo.title}} </li>
+          </ul>
+        </div>
+        <div class="container">
+          <input type="text" id="dataEdit" placeholder="Add Task" v-model="listItem"  @keyup.enter="addItem" @focus="showEdit">
+          <i class="fas fa-plus addItem" @click="addItem"></i>
+          <div class="edit">
+            <div class="title">
+      <!--         <input type="checkbox"> -->
+              <input type="text" class="w3-input" v-model="toDoTitle">
+              <div class="noUse"></div>
+              <i class="fas fa-star" @click="isToTop"></i>
+              <i class="fas fa-pencil-alt"></i>
+            </div>
+            <div class="time">
+              <i class="far fa-calendar-alt"></i>
+             <span class="subTitle">Deadline</span>
+              <div class="time_area">
+                <input type="date"  v-model="toDoTime">
+                <input type="time"  v-model="toDoClock">
+      <!--           <input type="text" id="datepicker" v-model="toDoTime"> -->
+              </div>
+            </div>
+            <div class="file">
+              <i class="far fa-file"></i>
+              <span class="subTitle">File</span>
+              <div class="fileInfo">
+                <div v-if="!toDoFile">
+                  <input type="file" @change="fileSelected"/>
+                </div>
+                <div v-else class="image_show">
+                  <img :src="toDoFile" />
+                  <button @click="removeImage">Remove image</button>
+                </div>
+                <p class="fileTime" v-text="toUpdateTime"></p>
+              </div>
+      <!--         <i class="fas fa-plus-square"></i> -->
+            </div>
+            <div class="comment">
+              <i class="far fa-comment-dots"></i>
+              <span class="subTitle">Comment</span>
+              <textarea cols="50" rows="5" v-model="toDoComment"></textarea>  
+            </div>
+            <div class="button">
+              <div class="cancel_btn" @click="cancelAdd">
+                <i class="fas fa-times"></i>
+                Cancel
+              </div>
+              <div class="save_btn" @click="comfirmAdd">
+                <i class="fas fa-plus"></i>
+                Save
+              </div>
+            </div>
+          </div>
+          <div id="move_area">
+      <!--       <template v-if="ifNowType(item)"> -->
+            <div :class="['list_item', 'ui-state-default', { active : item.complete}]" v-for="(item, index) in listItemRow"  :key="index"  >
+              <i class="fas fa-ellipsis-v"></i>
+              <div class="status">
+                <input type="checkbox" @click="finishItem(index)">
+                <span class="mainTitle">{{item.name}}</span>
+                <div class="noUse"></div>
+                  <i class="fas fa-star " @click="toTop(index)" :class={active:item.Sticky}></i>
+                  <i class="fas fa-pencil-alt" @click="editItem(index)"></i>
+                  <i class="far fa-trash-alt" @click="removeItem(index)"></i>
+              </div>
+              <div class="record_status">
+                <i class="far fa-calendar-alt gray" v-if="item.time!=''"></i><span class="dateTitle">{{item.time}}</span>
+                <i class="far fa-file gray" v-if="item.file!=''"></i>
+                <i class="far fa-comment-dots gray" v-if="item.comment!=''"></i>
+              </div>
+            </div>
+      <!--       </template> -->
+      <!--      <div class="list_item active ui-state-default" v-for="(item, index) in finishList"  v-if=" nowType == 'all' ||  nowType =='completed' ">
+             <i class="fas fa-ellipsis-v"></i>
+             <div class="status">
+              <input type="checkbox" @click="keepItem(index)">
+                <span class="mainTitle">{{item.name}}</span>
+                <div class="noUse"></div>
+                  <i class="fas fa-star" @click="toTop(index)" ></i>
+                  <i class="fas fa-pencil-alt" ></i>
+                  <i class="far fa-trash-alt" @click="removeItem(index)"></i>
+             </div>  
+             <div class="record_status">
+              <i class="far fa-calendar-alt gray" v-if="item.time!=''"></i>
+              <i class="far fa-file gray" v-if="item.file!=''"></i>
+              <i class="far fa-comment-dots gray" v-if="item.comment!=''"></i>
+             </div>
+          </div> -->
+          </div>
+          <p>總筆數: {{listItemRow.length}}</p>
+        </div>
+      </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.10/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/wickedpicker@0.4.3/dist/wickedpicker.min.js"></script>
+<script src="public/js/all.js"></script>
+</html>

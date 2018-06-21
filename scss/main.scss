@@ -1,0 +1,238 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style:none;
+    font-family:'Microsoft JhengHei';
+    // outline:1px solid ;
+  }
+  
+  body{
+    background:#ddd;
+  }
+  
+  .fas,.far{
+    cursor:pointer;
+  }
+  .fa-star{
+    &.active{
+      color:#f5a623;
+    }
+  }
+  
+  .fa-pencil-alt,.fa-plus-square{
+    color:#4a90ea;
+  }
+  
+  
+  .gray{
+    color:#777;
+  }
+  
+  
+  i{
+    display:inline-block;
+    padding:5px;
+  }
+  
+  .mainTitle{
+    padding-left:5px;
+  }
+  
+  input[type="checkbox"]{
+    width: 20px;
+    height: 20px;
+  }
+  
+  .list_type{
+    color:#fff;
+    height: 50px;
+    background:#4a90ea;
+    ul{
+      height: 100%;
+      width: 60%;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-around;
+      li{
+        height: 100%;
+        line-height:50px;
+        color:#00408b;
+        cursor:pointer;
+        &.active{
+          color:#fff;
+          border-bottom:3px solid #00408b;
+        }
+      }
+    }
+  }
+  .container{
+    width: 500px;
+    min-height: 500px;
+    height: 50vh;
+    top: 0;right: 0;left: 0;bottom: 0;
+    margin:50px auto 0 auto;
+    position:relative;
+    #dataEdit{
+        position:relative;
+        height: 30px;
+        border:1px solid #aaa;
+        border-radius:5px;
+        margin-bottom: 20px;
+        width: 500px;
+        padding:5px 5px 5px 40px;
+    }
+    .addItem{
+      color:#777;
+      position:absolute;
+      left: 10px;
+      top:3px;
+      cursor:pointer;
+    }
+    .subTitle{
+      font-weight:bold;
+    }
+    .edit{
+      background:#eee;
+      border-radius:10px;
+      overflow:hidden;
+      box-shadow:0px 0px 5px rgba(0,0,0,.3);
+      transition:.5s;
+      .title {
+        box-sizing:border-box;
+        padding:5px 5px 5px 20px;
+        display:flex;
+        align-items:center;
+        margin-bottom: 10px;
+        border-bottom:2px solid #ddd;
+        &:hover{
+          background:#fff2dc;
+        }
+        div{
+            content:"";
+            flex-basis:auto;
+            flex-grow:1;
+        }
+        span{
+          font-size: 28px;
+          font-weight:bold;
+        }
+      }
+    }
+    .time{
+      .time_area{
+        display:block;
+      }
+      input{
+        border:none;
+      }
+    }
+    .file{
+      position:relative;
+      .fileTime{
+        color:#666;
+        font-size: 14px;
+      }
+      .fa-plus-square{
+        position:absolute;
+        bottom: 24px;
+        left: 200px;
+      }
+      .image_show{
+        width: 100px;
+        height:auto;
+        img{
+          width: 100%;
+        }
+      }
+    }
+    .comment{
+      textarea{
+        display:block;
+        border:none;
+        margin-bottom: 20px;
+      }
+    }
+    .button{
+      display:flex;
+      cursor:pointer;
+      .cancel_btn{
+        flex-basis:50%;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        color:#d0021b;
+        background:#fff;
+        padding:10px;
+      }
+      .save_btn{
+        flex-basis:50%;
+        display:flex;
+        align-items:center;
+        height: 50px;
+        justify-content:center;
+        background:#4a90e2;
+        color:#fff;
+      }
+    }
+  }
+  
+  .time,.file,.comment{
+    padding:5px 0px 5px 30px;
+  }
+  
+  .list_item{
+    padding:5px 5px 5px 20px;
+    border-radius:5px;
+    margin:10px 0;
+    background:#eee;
+    position:relative;
+    .fa-ellipsis-v{
+      position:absolute;
+      left: 0;
+      top: 20px;
+      color:#888;
+      display:none;
+    }
+    // &:after{
+    //   font-family: FontAwesome;
+    //   content: "\f142";
+    //   display: inline-block;
+    //   position:absolute;
+    //   top: 20px;
+    //   left:5px;
+    //   display:none;
+    // }
+    &:hover{
+      background:#fff2dc;
+      .fa-ellipsis-v{
+        display:block;
+      }
+    }
+    .status{
+      display:flex;
+      align-items:center;
+      width: 100%;
+    }
+    .record_status{
+        font-size: 14px;
+    }
+    span{
+      font-weight:bold;
+      font-size: 22px;
+      &.dateTitle{
+        font-weight:normal;
+        font-size:14px;
+      }
+    }
+    &.active{
+      color:#bbb;
+      text-decoration:line-through;
+    }
+    .noUse{
+      flex-grow:1;
+    }
+    .fa-pencil-alt{
+      color:#333;
+    }
+  }
